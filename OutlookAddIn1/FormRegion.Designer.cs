@@ -13,12 +13,12 @@ namespace OutlookAddIn1
         public FormRegion(Microsoft.Office.Interop.Outlook.FormRegion formRegion)
             : base(Globals.Factory, formRegion)
         {
-            //fill the data
-            this.myFillData();
-            //initialize the components
-            this.InitializeComponent();
-            //fill the comboboxes
-            this.myMethod();
+                    //fill the data
+                    this.myFillData();
+                    //initialize the components
+                    this.InitializeComponent();
+                    //fill the comboboxes
+                    this.myMethod();
         }
 
         private System.ComponentModel.IContainer components = null;

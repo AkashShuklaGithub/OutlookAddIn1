@@ -207,6 +207,8 @@ namespace OutlookAddIn1
             this.floorComboBox.DataSource = floorNameList;
         }
 
+        
+
         #region Component Designer generated code
 
         private void InitializeComponent()
@@ -216,6 +218,7 @@ namespace OutlookAddIn1
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // siteComboBox
@@ -270,10 +273,21 @@ namespace OutlookAddIn1
             this.panel1.Size = new System.Drawing.Size(1316, 740);
             this.panel1.TabIndex = 4;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(53, 410);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(94, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Load Free/Busy";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new EventHandler(loadFreeBusy);
+            // 
             // FormRegion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -286,6 +300,11 @@ namespace OutlookAddIn1
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void loadFreeBusy(object sender, EventArgs e)
+        {
+            listButton[0].Text = listButton[0].Text + "'";
         }
 
 
@@ -302,6 +321,8 @@ namespace OutlookAddIn1
         }
 
         #endregion
+
+        private Button button1;
 
         public partial class FormRegionFactory : Microsoft.Office.Tools.Outlook.IFormRegionFactory
         {

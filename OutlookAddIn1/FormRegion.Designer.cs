@@ -138,8 +138,6 @@ namespace OutlookAddIn1
                 listButton[index].TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
                 listButton[index].Text = roomList[index].roomName;
                 listButton[index].TextChanged += new EventHandler(ThisAddIn.decideButtonColor);
-
-                label3.Text = "click here";
             }
 
         }
@@ -218,7 +216,6 @@ namespace OutlookAddIn1
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // siteComboBox
@@ -273,22 +270,10 @@ namespace OutlookAddIn1
             this.panel1.Size = new System.Drawing.Size(1316, 740);
             this.panel1.TabIndex = 4;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(42, 408);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(120, 18);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Load Free/Busy";
-            // 
             // FormRegion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -303,16 +288,16 @@ namespace OutlookAddIn1
 
         }
 
-        public static int label3ClickLastIndex = 0;
+        /*public static int label3ClickLastIndex = 0;
 
-        private void Label3_Click(object sender, EventArgs e)
+        /private void Label3_Click(object sender, EventArgs e)
         {
             if (label3ClickLastIndex <= listButton.Count)
             {
                 listButton[label3ClickLastIndex].Text = listButton[label3ClickLastIndex].Text + ";";
                 label3ClickLastIndex++;
             }
-        }
+        }*/
 
 
 
@@ -328,8 +313,6 @@ namespace OutlookAddIn1
         }
 
         #endregion
-
-        private Label label3;
 
         public partial class FormRegionFactory : Microsoft.Office.Tools.Outlook.IFormRegionFactory
         {

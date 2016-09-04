@@ -138,6 +138,7 @@ namespace OutlookAddIn1
                 listButton[index].TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
                 listButton[index].Text = roomList[index].roomName;
                 listButton[index].TextChanged += new EventHandler(ThisAddIn.decideButtonColor);
+                //listButton[index].BackColorChanged += new EventHandler(loadFreeBusy);
             }
 
         }
@@ -207,7 +208,16 @@ namespace OutlookAddIn1
             this.floorComboBox.DataSource = floorNameList;
         }
 
-        
+
+        public static int indice = 0;
+
+        private void loadFreeBusy(object sender, EventArgs e)
+        {
+            if (indice > (listButton.Count - 1)) return;
+            listButton[indice].Text = listButton[indice].Text + "'";
+            indice++;   
+        }
+
 
         #region Component Designer generated code
 
@@ -302,13 +312,7 @@ namespace OutlookAddIn1
 
         }
 
-        private void loadFreeBusy(object sender, EventArgs e)
-        {
-            listButton[0].Text = listButton[0].Text + "'";
-        }
-
-
-
+       
         #endregion
 
         #region Form Region Designer generated code

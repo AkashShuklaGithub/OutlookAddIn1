@@ -288,17 +288,6 @@ namespace OutlookAddIn1
 
         }
 
-        /*public static int label3ClickLastIndex = 0;
-
-        /private void Label3_Click(object sender, EventArgs e)
-        {
-            if (label3ClickLastIndex <= listButton.Count)
-            {
-                listButton[label3ClickLastIndex].Text = listButton[label3ClickLastIndex].Text + ";";
-                label3ClickLastIndex++;
-            }
-        }*/
-
 
 
         #endregion

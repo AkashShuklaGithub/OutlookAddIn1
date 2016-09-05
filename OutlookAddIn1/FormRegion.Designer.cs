@@ -138,7 +138,6 @@ namespace OutlookAddIn1
                 listButton[index].TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
                 listButton[index].Text = roomList[index].roomName;
                 listButton[index].TextChanged += new EventHandler(ThisAddIn.decideButtonColor);
-                //listButton[index].BackColorChanged += new EventHandler(loadFreeBusy);
             }
 
         }
@@ -213,9 +212,11 @@ namespace OutlookAddIn1
 
         private void loadFreeBusy(object sender, EventArgs e)
         {
-            if (indice > (listButton.Count - 1)) return;
-            listButton[indice].Text = listButton[indice].Text + "'";
-            indice++;   
+           while (indice <= (listButton.Count - 1))
+            {
+                listButton[indice].Text = listButton[indice].Text + "'";
+                indice++;
+            }
         }
 
 

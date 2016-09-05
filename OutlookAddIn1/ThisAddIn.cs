@@ -8,6 +8,7 @@ using Office = Microsoft.Office.Core;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Threading;
+using System.IO;
 
 namespace OutlookAddIn1
 {
@@ -62,14 +63,9 @@ namespace OutlookAddIn1
 
         public static void decideButtonColor(object sender, EventArgs e)
         {
+
             var btn = (System.Windows.Forms.Button)sender;
-            //BackgroundWorker bw = new BackgroundWorker();
             string buttonTag = btn.Tag.ToString();
-
-
-            //bw.DoWork += new DoWorkEventHandler(
-            //delegate (object o, DoWorkEventArgs args)
-            //{
             if (btn.Tag.ToString() != "")
             {
                 appointmentItem.Recipients.Add(btn.Tag.ToString());
@@ -84,12 +80,8 @@ namespace OutlookAddIn1
                 else
                     startIndex = startHour * 2 + 1;
 
-                //for(int i=1;i<appointmentItem.Recipients.Count;i++)
-                //{
-                //  if(appointmentItem.Recipients[i].Name==buttonTag)
-                //{
-                //freeBusy = appointmentItem.Recipients[appointmentItem.Recipients.Count].FreeBusy(appointmentItem.StartInStartTimeZone.Date, 30, false).Substring(0, 48);
                 freeBusy = appointmentItem.Recipients[appointmentItem.Recipients.Count].FreeBusy(appointmentItem.StartInStartTimeZone.Date, 30, false);
+                
                 if (freeBusy != null)
                 {
                     if (freeBusy[startIndex] == '0')
@@ -100,14 +92,6 @@ namespace OutlookAddIn1
 
                 appointmentItem.Recipients.Remove(appointmentItem.Recipients.Count);
             }
-                //});
-
-            //bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(
-            //    delegate (object o, RunWorkerCompletedEventArgs args)
-            //    {
-            //    });
-
-            //bw.RunWorkerAsync();
         }
 
         #region VSTO generated code

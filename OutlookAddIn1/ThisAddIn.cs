@@ -1,15 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml.Linq;
 using Outlook = Microsoft.Office.Interop.Outlook;
-using Office = Microsoft.Office.Core;
-using System.Windows.Forms;
-using System.ComponentModel;
-using System.Threading;
-using System.IO;
-using System.Net;
 
 namespace OutlookAddIn1
 {

@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.ComponentModel;
 using System.Threading;
 using System.IO;
+using System.Net;
 
 namespace OutlookAddIn1
 {
@@ -80,8 +81,10 @@ namespace OutlookAddIn1
                 else
                     startIndex = startHour * 2 + 1;
 
-                freeBusy = appointmentItem.Recipients[appointmentItem.Recipients.Count].FreeBusy(appointmentItem.StartInStartTimeZone.Date, 30, false);
+
+               freeBusy = appointmentItem.Recipients[appointmentItem.Recipients.Count].FreeBusy(appointmentItem.StartInStartTimeZone.Date, 30, false).Substring(0, 48) + appointmentItem.Recipients[appointmentItem.Recipients.Count].FreeBusy(appointmentItem.StartInStartTimeZone.Date, 30, false).Substring(0,48);
                 
+
                 if (freeBusy != null)
                 {
                     if (freeBusy[startIndex] == '0')

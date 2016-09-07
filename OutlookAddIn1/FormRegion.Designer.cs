@@ -212,7 +212,7 @@ namespace OutlookAddIn1
 
         private void loadFreeBusy(object sender, EventArgs e)
         {
-           while (indice <= (listButton.Count - 1))
+            if (indice <= (listButton.Count - 1))
             {
                 listButton[indice].Text = listButton[indice].Text + "'";
                 indice++;

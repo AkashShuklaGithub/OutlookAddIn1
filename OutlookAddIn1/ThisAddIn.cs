@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using Outlook = Microsoft.Office.Interop.Outlook;
 
 namespace OutlookAddIn1
@@ -53,38 +54,45 @@ namespace OutlookAddIn1
             }
         }
 
+        public static string freeBusy;
+        public static int startIndex;
+
         public static void decideButtonColor(object sender, EventArgs e)
         {
-
             var btn = (System.Windows.Forms.Button)sender;
             string buttonTag = btn.Tag.ToString();
             if (btn.Tag.ToString() != "")
             {
-                appointmentItem.Recipients.Add(btn.Tag.ToString());
 
-                int startIndex;
-                string freeBusy;
+                BackgroundWorker bw = new BackgroundWorker();
+                bw.DoWork += new DoWorkEventHandler(
+                    delegate (object o, DoWorkEventArgs args)
+                    {
+                        appointmentItem.Recipients.Add(btn.Tag.ToString());
+                        int startHour = appointmentItem.StartInStartTimeZone.Hour;
+                        int startMinute = appointmentItem.StartInStartTimeZone.Minute;
+                        if (startMinute < 30)
+                            startIndex = startHour * 2;
+                        else
+                            startIndex = startHour * 2 + 1;
+                        freeBusy = appointmentItem.Recipients[appointmentItem.Recipients.Count].FreeBusy(appointmentItem.StartInStartTimeZone.Date, 30, false);
 
-                int startHour = appointmentItem.StartInStartTimeZone.Hour;
-                int startMinute = appointmentItem.StartInStartTimeZone.Minute;
-                if (startMinute < 30)
-                    startIndex = startHour * 2;
-                else
-                    startIndex = startHour * 2 + 1;
+                    });
+                bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(
+                    delegate(object o, RunWorkerCompletedEventArgs args) 
+                    {
+                        if (freeBusy != null)
+                        {
+                            if (freeBusy[startIndex] == '0')
+                                btn.BackColor = System.Drawing.Color.LightGreen;//free
+                            else
+                                btn.BackColor = System.Drawing.Color.OrangeRed;//busy
+                        }
+                        appointmentItem.Recipients.Remove(appointmentItem.Recipients.Count);
+                    });
+                bw.RunWorkerAsync();
 
-
-               freeBusy = appointmentItem.Recipients[appointmentItem.Recipients.Count].FreeBusy(appointmentItem.StartInStartTimeZone.Date, 30, false).Substring(0, 48) + appointmentItem.Recipients[appointmentItem.Recipients.Count].FreeBusy(appointmentItem.StartInStartTimeZone.Date, 30, false).Substring(0,48);
                 
-
-                if (freeBusy != null)
-                {
-                    if (freeBusy[startIndex] == '0')
-                        btn.BackColor = System.Drawing.Color.LightGreen;//free
-                    else
-                        btn.BackColor = System.Drawing.Color.OrangeRed;//busy
-                }
-
-                appointmentItem.Recipients.Remove(appointmentItem.Recipients.Count);
             }
         }
 

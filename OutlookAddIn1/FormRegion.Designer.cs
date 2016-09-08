@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace OutlookAddIn1
@@ -210,7 +211,7 @@ namespace OutlookAddIn1
 
         private void loadFreeBusy(object sender, EventArgs e)
         {
-            if (indice <= (listButton.Count - 1))
+            if ( indice <= (listButton.Count - 1))
             {
                 listButton[indice].Text = listButton[indice].Text + "'";
                 indice++;

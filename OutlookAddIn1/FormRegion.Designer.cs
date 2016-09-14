@@ -209,9 +209,9 @@ namespace OutlookAddIn1
 
         public static int indice = 0;
 
-        private void loadFreeBusy(object sender, EventArgs e)
+        public static void loadFreeBusy(object sender, EventArgs e)
         {
-            if ( indice <= (listButton.Count - 1))
+            if(indice<=listButton.Count-1)
             {
                 listButton[indice].Text = listButton[indice].Text + "'";
                 indice++;

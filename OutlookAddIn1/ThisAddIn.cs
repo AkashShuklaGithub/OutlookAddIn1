@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Threading;
+using System.Windows.Forms;
 using Outlook = Microsoft.Office.Interop.Outlook;
 
 namespace OutlookAddIn1
@@ -59,8 +61,7 @@ namespace OutlookAddIn1
 
         public static void decideButtonColor(object sender, EventArgs e)
         {
-            var btn = (System.Windows.Forms.Button)sender;
-            string buttonTag = btn.Tag.ToString();
+            var btn = (Button)sender;
             if (btn.Tag.ToString() != "")
             {
 
@@ -89,10 +90,10 @@ namespace OutlookAddIn1
                                 btn.BackColor = System.Drawing.Color.OrangeRed;//busy
                         }
                         appointmentItem.Recipients.Remove(appointmentItem.Recipients.Count);
+                        
                     });
                 bw.RunWorkerAsync();
 
-                
             }
         }
 

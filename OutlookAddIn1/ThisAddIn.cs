@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.Exchange.WebServices.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Net;
 using System.Threading;
 using System.Windows.Forms;
 using Outlook = Microsoft.Office.Interop.Outlook;
@@ -58,41 +60,32 @@ namespace OutlookAddIn1
 
         public static string freeBusy;
         public static int startIndex;
+        public static List<AttendeeInfo> attendees;
 
         public static void decideButtonColor(object sender, EventArgs e)
         {
             var btn = (Button)sender;
             if (btn.Tag.ToString() != "")
             {
-
-                //BackgroundWorker bw = new BackgroundWorker();
-                //bw.DoWork += new DoWorkEventHandler(
-                //delegate (object o, DoWorkEventArgs args)
-                //{
-                freeBusy = null;
-                startIndex = 0;
-                appointmentItem.Recipients.Add(btn.Tag.ToString());
-                int startHour = appointmentItem.StartInStartTimeZone.Hour;
-                int startMinute = appointmentItem.StartInStartTimeZone.Minute;
-                if (startMinute < 30)
-                    startIndex = startHour * 2;
-                else
-                    startIndex = startHour * 2 + 1;
-                freeBusy = appointmentItem.Recipients[appointmentItem.Recipients.Count].FreeBusy(appointmentItem.StartInStartTimeZone.Date, 30, false).Substring(0, 48);
-                //});
-                //bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(
-                //delegate(object o, RunWorkerCompletedEventArgs args) 
-                //{
-                if (freeBusy != null)
+                ExchangeService service = new ExchangeService();
+                service.UseDefaultCredentials = true;
+                service.Url = new Uri("https://email.netapp.com/EWS/Exchange.asmx");
+                ServicePointManager.ServerCertificateValidationCallback = (object sen, System.Security.Cryptography.X509Certificates.X509Certificate certificate,
+                        System.Security.Cryptography.X509Certificates.X509Chain chain,
+                        System.Net.Security.SslPolicyErrors sslPolicyErrors) => true;
+                AvailabilityOptions myOptions = new AvailabilityOptions();
+                myOptions.MeetingDuration = 30;
+                myOptions.RequestedFreeBusyView = FreeBusyViewType.FreeBusy;
+                GetUserAvailabilityResults freeBusyResults = service.GetUserAvailability(attendees,new TimeWindow(DateTime.Now, DateTime.Now.AddDays(1)),AvailabilityData.FreeBusy,myOptions);
+                string temp=null;
+                foreach (AttendeeAvailability availability in freeBusyResults.AttendeesAvailability)
                 {
-                    if (freeBusy[startIndex] == '0')
-                        btn.BackColor = System.Drawing.Color.LightGreen;//free
-                    else
-                        btn.BackColor = System.Drawing.Color.OrangeRed;//busy
+                    foreach (CalendarEvent calendarItem in availability.CalendarEvents)
+                    {
+                        temp += "\nFree/busy status: " + calendarItem.FreeBusyStatus.ToString() + "\nStart time: " + calendarItem.StartTime.ToString() + "\nEnd time: " + calendarItem.EndTime.ToString();
+                    }
                 }
-                //appointmentItem.Recipients.Remove(appointmentItem.Recipients.Count);
-                //});
-                //bw.RunWorkerAsync();
+                appointmentItem.Body = temp;
             }
         }
 

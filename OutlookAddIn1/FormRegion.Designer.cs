@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Exchange.WebServices.Data;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Forms;
@@ -120,7 +121,7 @@ namespace OutlookAddIn1
                 listButton.Add(new System.Windows.Forms.Button());
             }
 
-
+            ThisAddIn.attendees = new List<Microsoft.Exchange.WebServices.Data.AttendeeInfo>();
 
             //foreach button
             for (int index = 0; index < t; index++)
@@ -137,6 +138,14 @@ namespace OutlookAddIn1
                 listButton[index].TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
                 listButton[index].Text = roomList[index].roomName;
                 listButton[index].TextChanged += new EventHandler(ThisAddIn.decideButtonColor);
+                if (listButton[index].Tag.ToString() != "")
+                {
+                    ThisAddIn.attendees.Add(new AttendeeInfo()
+                    {
+                        SmtpAddress = listButton[index].Tag.ToString(),
+                        AttendeeType = MeetingAttendeeType.Required
+                    });
+                }
             }
 
         }
@@ -211,7 +220,7 @@ namespace OutlookAddIn1
 
         public static void loadFreeBusy(object sender, EventArgs e)
         {
-            if( indice<=listButton.Count-1)
+            if(indice<=listButton.Count-1)
             {
                 listButton[indice].Text = listButton[indice].Text + "'";
                 indice++;

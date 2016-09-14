@@ -67,33 +67,32 @@ namespace OutlookAddIn1
 
                 //BackgroundWorker bw = new BackgroundWorker();
                 //bw.DoWork += new DoWorkEventHandler(
-                    //delegate (object o, DoWorkEventArgs args)
-                    //{
-                        freeBusy = null;
-                        startIndex = 0;
-                        appointmentItem.Recipients.Add(btn.Tag.ToString());
-                        int startHour = appointmentItem.StartInStartTimeZone.Hour;
-                        int startMinute = appointmentItem.StartInStartTimeZone.Minute;
-                        if (startMinute < 30)
-                            startIndex = startHour * 2;
-                        else
-                            startIndex = startHour * 2 + 1;
-                        freeBusy = appointmentItem.Recipients[appointmentItem.Recipients.Count].FreeBusy(appointmentItem.StartInStartTimeZone.Date, 30, false).Substring(0,48);
-                    //});
+                //delegate (object o, DoWorkEventArgs args)
+                //{
+                freeBusy = null;
+                startIndex = 0;
+                appointmentItem.Recipients.Add(btn.Tag.ToString());
+                int startHour = appointmentItem.StartInStartTimeZone.Hour;
+                int startMinute = appointmentItem.StartInStartTimeZone.Minute;
+                if (startMinute < 30)
+                    startIndex = startHour * 2;
+                else
+                    startIndex = startHour * 2 + 1;
+                freeBusy = appointmentItem.Recipients[appointmentItem.Recipients.Count].FreeBusy(appointmentItem.StartInStartTimeZone.Date, 30, false).Substring(0, 48);
+                //});
                 //bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(
-                    //delegate(object o, RunWorkerCompletedEventArgs args) 
-                    //{
-                        if (freeBusy != null)
-                        {
-                            if (freeBusy[startIndex] == '0')
-                                btn.BackColor = System.Drawing.Color.LightGreen;//free
-                            else
-                                btn.BackColor = System.Drawing.Color.OrangeRed;//busy
-                        }
-                        appointmentItem.Recipients.Remove(appointmentItem.Recipients.Count);
-                    //});
+                //delegate(object o, RunWorkerCompletedEventArgs args) 
+                //{
+                if (freeBusy != null)
+                {
+                    if (freeBusy[startIndex] == '0')
+                        btn.BackColor = System.Drawing.Color.LightGreen;//free
+                    else
+                        btn.BackColor = System.Drawing.Color.OrangeRed;//busy
+                }
+                //appointmentItem.Recipients.Remove(appointmentItem.Recipients.Count);
+                //});
                 //bw.RunWorkerAsync();
-
             }
         }
 

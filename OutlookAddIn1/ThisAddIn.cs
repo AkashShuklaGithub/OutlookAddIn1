@@ -65,10 +65,12 @@ namespace OutlookAddIn1
             if (btn.Tag.ToString() != "")
             {
 
-                BackgroundWorker bw = new BackgroundWorker();
-                bw.DoWork += new DoWorkEventHandler(
-                    delegate (object o, DoWorkEventArgs args)
-                    {
+                //BackgroundWorker bw = new BackgroundWorker();
+                //bw.DoWork += new DoWorkEventHandler(
+                    //delegate (object o, DoWorkEventArgs args)
+                    //{
+                        freeBusy = null;
+                        startIndex = 0;
                         appointmentItem.Recipients.Add(btn.Tag.ToString());
                         int startHour = appointmentItem.StartInStartTimeZone.Hour;
                         int startMinute = appointmentItem.StartInStartTimeZone.Minute;
@@ -76,12 +78,11 @@ namespace OutlookAddIn1
                             startIndex = startHour * 2;
                         else
                             startIndex = startHour * 2 + 1;
-                        freeBusy = appointmentItem.Recipients[appointmentItem.Recipients.Count].FreeBusy(appointmentItem.StartInStartTimeZone.Date, 30, false);
-
-                    });
-                bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(
-                    delegate(object o, RunWorkerCompletedEventArgs args) 
-                    {
+                        freeBusy = appointmentItem.Recipients[appointmentItem.Recipients.Count].FreeBusy(appointmentItem.StartInStartTimeZone.Date, 30, false).Substring(0,48);
+                    //});
+                //bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(
+                    //delegate(object o, RunWorkerCompletedEventArgs args) 
+                    //{
                         if (freeBusy != null)
                         {
                             if (freeBusy[startIndex] == '0')
@@ -90,9 +91,8 @@ namespace OutlookAddIn1
                                 btn.BackColor = System.Drawing.Color.OrangeRed;//busy
                         }
                         appointmentItem.Recipients.Remove(appointmentItem.Recipients.Count);
-                        
-                    });
-                bw.RunWorkerAsync();
+                    //});
+                //bw.RunWorkerAsync();
 
             }
         }

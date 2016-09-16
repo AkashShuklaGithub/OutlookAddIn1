@@ -37,9 +37,9 @@ namespace OutlookAddIn1
         public Label label1;
         public Label label2;
         public Panel panel1;
-        public static System.Collections.Generic.List<OutlookAddIn1.Site> siteList;
-        public static System.Collections.Generic.List<OutlookAddIn1.Floor> floorList;
-        public static System.Collections.Generic.List<OutlookAddIn1.Room> roomList;
+        public static List<Site> siteList;
+        public static List<Floor> floorList;
+        public static List<Room> roomList;
         public static List<Button> listButton;
         public static listModel test;
 
@@ -58,7 +58,7 @@ namespace OutlookAddIn1
                 {
                     test = Newtonsoft.Json.JsonConvert.DeserializeObject<listModel>(streamReader.ReadToEnd());
 
-                    siteList = new System.Collections.Generic.List<OutlookAddIn1.Site>();
+                    siteList = new List<Site>();
                     for (int i = 0; i < test.site.Count; i++)
                     {
                         siteList.Add(test.site[i]);
@@ -135,6 +135,8 @@ namespace OutlookAddIn1
                 listButton[index].Size = new System.Drawing.Size(roomList[index].sizeX * scale, roomList[index].sizeY * scale);
                 listButton[index].Tag = roomList[index].tag;
                 listButton[index].Click += new System.EventHandler(OutlookAddIn1.ThisAddIn.button1_Click);
+                listButton[index].TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+                listButton[index].Text = roomList[index].roomName;
                 if (listButton[index].Tag.ToString() != "")
                 {
                     listButton[index].BackColor = System.Drawing.Color.LightGreen;
@@ -143,9 +145,6 @@ namespace OutlookAddIn1
                 {
                     listButton[index].BackColor = System.Drawing.Color.LightYellow;
                 }
-                listButton[index].TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-                listButton[index].Text = roomList[index].roomName;
-                listButton[index].TextChanged += new EventHandler(ThisAddIn.decideButtonColor);
 
                 if (listButton[index].Tag.ToString() != "")
                 {
@@ -229,7 +228,6 @@ namespace OutlookAddIn1
                 listButton[i].BackColor = System.Drawing.Color.LightYellow;
                 listButton[i].TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
                 listButton[i].Text = roomList[i].roomName;
-                listButton[i].TextChanged += new EventHandler(ThisAddIn.decideButtonColor);
             }
 
         }
@@ -256,19 +254,6 @@ namespace OutlookAddIn1
             //set datasource of floor combobox as floor names list
             this.floorComboBox.DataSource = floorNameList;
         }
-
-
-        public static int indice = 0;
-
-        public static void loadFreeBusy(object sender, EventArgs e)
-        {
-            if(indice<=listButton.Count-1)
-            {
-                listButton[indice].Text = listButton[indice].Text + "'";
-                indice++;
-            }
-        }
-
 
         #region Component Designer generated code
 
@@ -336,13 +321,14 @@ namespace OutlookAddIn1
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(53, 410);
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.button1.Location = new System.Drawing.Point(41, 396);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 23);
+            this.button1.Size = new System.Drawing.Size(110, 48);
             this.button1.TabIndex = 5;
             this.button1.Text = "Load Free/Busy";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new EventHandler(loadFreeBusy);
             // 
             // FormRegion
             // 

@@ -6,52 +6,52 @@
         {
           'floorName': 'Floor 1',
           'room': [
-		    {  'roomId':'1','roomName': ' Lake Agara (5)', 'locationX':'0','locationY':'200','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.310@netapp.com'},
-			{  'roomId':'2','roomName': ' Lake Astamudi(6)', 'locationX':'360','locationY':'160','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.324@netapp.com'},
-			{  'roomId':'3','roomName': ' Lake Bellandur', 'locationX':'0','locationY':'280','sizeX':'40','sizeY': '40','tag':'' },
-			{  'roomId':'4','roomName': ' Lake Chilika (20-P)', 'locationX':'520','locationY':'320','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.336@netapp.com'},
-			{ 'roomId':'5', 'roomName': ' Lake Dal (10-P)', 'locationX':'280','locationY':'0','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.319@netapp.com'},
-			{  'roomId':'6','roomName': 'cr-NB-1.1 Great Salt Lake (8-P)', 'locationX':'160','locationY':'240','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.306@netapp.com'},
-			{  'roomId':'7','roomName': 'cr-NB-1.1 Lake Hebbal (8-P)', 'locationX':'0','locationY':'240','sizeX':'40','sizeY': '40' ,'tag':'cr-NB-1.1.309@netapp.com'},
-			{  'roomId':'8','roomName': 'cr-NB-1.1 Hussain Sagar (48-P)', 'locationX':'200','locationY':'120','sizeX':'80','sizeY': '80','tag':'cr-NB-1.1.316@netapp.com'},
-			{  'roomId':'9','roomName': ' Lake Harike', 'locationX':'400','locationY':'80','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.329@netapp.com'},
-			{  'roomId':'10','roomName': 'cr-NB-1.1 Jalmahal Lake (8-P)', 'locationX':'360','locationY':'0','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.326@netapp.com'},
-			{  'roomId':'11','roomName': 'Lake Kodaikanal', 'locationX':'440','locationY':'280','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.335@netapp.com'},
-			{  'roomId':'12','roomName': 'Lake Kolleru', 'locationX':'560','locationY':'320','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.3037@netapp.com'},
-			{  'roomId':'13','roomName': 'Lake Michigan', 'locationX':'160','locationY':'0','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.301@netapp.com'},
-			{  'roomId':'14','roomName': 'Lake Mallawi', 'locationX':'160','locationY':'80','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.303@netapp.com'},
-			{  'roomId':'15','roomName': 'Lake Nicaragua', 'locationX':'160','locationY':'40','sizeX':'40','sizeY': '40','tag':''},
-			{  'roomId':'16','roomName': 'Lake Superior', 'locationX':'160','locationY':'120','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.304@netapp.com'},
-			{  'roomId':'17','roomName': 'Lake Torrens', 'locationX':'160','locationY':'160','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.305@netapp.com'},
-			{ 'roomId':'18', 'roomName': 'Lake Lalbagh', 'locationX':'280','locationY':'120','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.322@netapp.com'},
-			{  'roomId':'19','roomName': 'Lake Lunar', 'locationX':'400','locationY':'120','sizeX':'40','sizeY': '20','tag':'cr-NB-1.1.330@netapp.com'},
-			{  'roomId':'20','roomName': 'Lake Nagarvana', 'locationX':'0','locationY':'320','sizeX':'40','sizeY': '40','tag':''},
-			{  'roomId':'21','roomName': 'cr-NB-1.1 Osman Sagar (48-P)', 'locationX':'200','locationY':'40','sizeX':'80','sizeY': '80','tag':'cr-NB-1.1.317@netapp.com'},
-			{ 'roomId':'22', 'roomName': 'Lake Pulicat', 'locationX':'440','locationY':'240','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.334@netapp.com'},
-			{  'roomId':'23','roomName': 'Lake Pushkar', 'locationX':'400','locationY':'160','sizeX':'40','sizeY': '20','tag':'cr-NB-1.1.332@netapp.com'},
-			{  'roomId':'24','roomName': 'Lake Rampura', 'locationX':'600','locationY':'320','sizeX':'40','sizeY': '40','tag':''},
-			{  'roomId':'25','roomName': 'cr-NB-1.1 Renuka Lake (10-P)', 'locationX':'360','locationY':'40','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.325@netapp.com'},
-			{ 'roomId':'26', 'roomName': 'Lake Sambhar', 'locationX':'400','locationY':'140','sizeX':'40','sizeY': '20','tag':'cr-NB-1.1.331@netapp.com'},
-			{ 'roomId':'27', 'roomName': 'Shankey Tank', 'locationX':'280','locationY':'80','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.321@netapp.com'},
-			{  'roomId':'28','roomName': 'Lake Shambhu', 'locationX':'400','locationY':'180','sizeX':'40','sizeY': '20','tag':'cr-NB-1.1.333@netapp.com'},
-			{  'roomId':'29','roomName': 'Lake Sukhna', 'locationX':'400','locationY':'0','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.327@netapp.com'},
-			{  'roomId':'30','roomName': 'cr-NB-1.1 Tulsi Lake (10-P) <cr-NB-1.1.323@netapp.com>', 'locationX':'280','locationY':'160','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.323@netapp.com'},
-			{  'roomId':'31','roomName': 'Lake Ulsoor', 'locationX':'80','locationY':'280','sizeX':'40','sizeY': '40','tag':''},
-			{  'roomId':'32','roomName': 'Lake Varthur', 'locationX':'280','locationY':'40','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.320@netapp.com'},
-			{  'roomId':'33','roomName': 'Lake Wular', 'locationX':'400','locationY':'40','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.328@netapp.com'},
-			{  'roomId':'lift','roomName': 'lift', 'locationX':'240','locationY':'280','sizeX':'40','sizeY': '40','tag':''}
+		    {  'roomId':'1','roomName': ' Lake Agara (5)','longName':'cr-NB-1.1 Lake Agara (5)', 'locationX':'0','locationY':'200','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.310@netapp.com'},
+			{  'roomId':'2','roomName': ' Lake Astamudi(6)','longName':'cr-NB-1.1 Lake Astamudi(6)', 'locationX':'360','locationY':'160','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.324@netapp.com'},
+			{  'roomId':'3','roomName': ' Lake Bellandur','longName':'Lake Bellandur', 'locationX':'0','locationY':'280','sizeX':'40','sizeY': '40','tag':'' },
+			{  'roomId':'4','roomName': ' Lake Chilika (20-P)','longName':'Lake Chilika (20-P)', 'locationX':'520','locationY':'320','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.336@netapp.com'},
+			{ 'roomId':'5', 'roomName': ' Lake Dal (10-P)','longName':'Lake Dal (10-P)', 'locationX':'280','locationY':'0','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.319@netapp.com'},
+			{  'roomId':'6','roomName': 'cr-NB-1.1 Great Salt Lake (8-P)','longName':'cr-NB-1.1 Great Salt Lake (8-P)', 'locationX':'160','locationY':'240','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.306@netapp.com'},
+			{  'roomId':'7','roomName': 'cr-NB-1.1 Lake Hebbal (8-P)','longName':'cr-NB-1.1 Lake Hebbal (8-P)', 'locationX':'0','locationY':'240','sizeX':'40','sizeY': '40' ,'tag':'cr-NB-1.1.309@netapp.com'},
+			{  'roomId':'8','roomName': 'cr-NB-1.1 Hussain Sagar (48-P)','longName':'cr-NB-1.1 Hussain Sagar (48-P)', 'locationX':'200','locationY':'120','sizeX':'80','sizeY': '80','tag':'cr-NB-1.1.316@netapp.com'},
+			{  'roomId':'9','roomName': ' Lake Harike','longName':'Lake Harike', 'locationX':'400','locationY':'80','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.329@netapp.com'},
+			{  'roomId':'10','roomName': 'cr-NB-1.1 Jalmahal Lake (8-P)','longName':'cr-NB-1.1 Jalmahal Lake (8-P)', 'locationX':'360','locationY':'0','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.326@netapp.com'},
+			{  'roomId':'11','roomName': 'Lake Kodaikanal','longName':'Lake Kodaikanal', 'locationX':'440','locationY':'280','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.335@netapp.com'},
+			{  'roomId':'12','roomName': 'Lake Kolleru','longName':'Lake Kolleru', 'locationX':'560','locationY':'320','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.3037@netapp.com'},
+			{  'roomId':'13','roomName': 'Lake Michigan','longName':'Lake Michigan', 'locationX':'160','locationY':'0','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.301@netapp.com'},
+			{  'roomId':'14','roomName': 'Lake Mallawi','longName':'Lake Mallawi', 'locationX':'160','locationY':'80','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.303@netapp.com'},
+			{  'roomId':'15','roomName': 'Lake Nicaragua','longName':'Lake Nicaragua', 'locationX':'160','locationY':'40','sizeX':'40','sizeY': '40','tag':''},
+			{  'roomId':'16','roomName': 'Lake Superior','longName':'Lake Superior', 'locationX':'160','locationY':'120','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.304@netapp.com'},
+			{  'roomId':'17','roomName': 'Lake Torrens','longName':'Lake Torrens', 'locationX':'160','locationY':'160','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.305@netapp.com'},
+			{ 'roomId':'18', 'roomName': 'Lake Lalbagh','longName':'Lake Lalbagh', 'locationX':'280','locationY':'120','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.322@netapp.com'},
+			{  'roomId':'19','roomName': 'Lake Lunar','longName':'Lake Lunar', 'locationX':'400','locationY':'120','sizeX':'40','sizeY': '20','tag':'cr-NB-1.1.330@netapp.com'},
+			{  'roomId':'20','roomName': 'Lake Nagarvana','longName':'Lake Nagarvana', 'locationX':'0','locationY':'320','sizeX':'40','sizeY': '40','tag':''},
+			{  'roomId':'21','roomName': 'cr-NB-1.1 Osman Sagar (48-P)','longName':'cr-NB-1.1 Osman Sagar (48-P)', 'locationX':'200','locationY':'40','sizeX':'80','sizeY': '80','tag':'cr-NB-1.1.317@netapp.com'},
+			{ 'roomId':'22', 'roomName': 'Lake Pulicat','longName':'Lake Pulicat', 'locationX':'440','locationY':'240','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.334@netapp.com'},
+			{  'roomId':'23','roomName': 'Lake Pushkar','longName':'Lake Pushkar', 'locationX':'400','locationY':'160','sizeX':'40','sizeY': '20','tag':'cr-NB-1.1.332@netapp.com'},
+			{  'roomId':'24','roomName': 'Lake Rampura','longName':'Lake Rampura', 'locationX':'600','locationY':'320','sizeX':'40','sizeY': '40','tag':''},
+			{  'roomId':'25','roomName': 'cr-NB-1.1 Renuka Lake (10-P)','longName':'cr-NB-1.1 Renuka Lake (10-P)', 'locationX':'360','locationY':'40','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.325@netapp.com'},
+			{ 'roomId':'26', 'roomName': 'Lake Sambhar','longName':'Lake Sambhar', 'locationX':'400','locationY':'140','sizeX':'40','sizeY': '20','tag':'cr-NB-1.1.331@netapp.com'},
+			{ 'roomId':'27', 'roomName': 'Shankey Tank','longName':'Shankey Tank', 'locationX':'280','locationY':'80','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.321@netapp.com'},
+			{  'roomId':'28','roomName': 'Lake Shambhu','longName':'Lake Shambhu', 'locationX':'400','locationY':'180','sizeX':'40','sizeY': '20','tag':'cr-NB-1.1.333@netapp.com'},
+			{  'roomId':'29','roomName': 'Lake Sukhna','longName':'Lake Sukhna', 'locationX':'400','locationY':'0','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.327@netapp.com'},
+			{  'roomId':'30','roomName': 'cr-NB-1.1 Tulsi Lake (10-P) <cr-NB-1.1.323@netapp.com>','longName':'cr-NB-1.1 Tulsi Lake (10-P) <cr-NB-1.1.323@netapp.com>', 'locationX':'280','locationY':'160','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.323@netapp.com'},
+			{  'roomId':'31','roomName': 'Lake Ulsoor','longName':'Lake Ulsoor', 'locationX':'80','locationY':'280','sizeX':'40','sizeY': '40','tag':''},
+			{  'roomId':'32','roomName': 'Lake Varthur','longName':'Lake Varthur', 'locationX':'280','locationY':'40','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.320@netapp.com'},
+			{  'roomId':'33','roomName': 'Lake Wular','longName':'Lake Wular', 'locationX':'400','locationY':'40','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.328@netapp.com'},
+			{  'roomId':'lift','roomName': 'lift','longName':'lift', 'locationX':'240','locationY':'280','sizeX':'40','sizeY': '40','tag':''}
           ]
         },
         {
           'floorName': 'Floor 2',
           'room': [
-            { 'roomName': 'Great Salt Lake(8-P)', 'locationX':'4','locationY':'3','sizeX':'123','sizeY': '49','tag':'cr-NB-1.1.306@netapp.com' },
-            { 'roomName': 'Harike Lake(6)', 'locationX':'133','locationY':'3','sizeX':'123','sizeY': '49','tag':'cr-NB-1.1.329@netapp.com' }
+            { 'roomName': 'Great Salt Lake(8-P)','longName':'Great Salt Lake(8-P)', 'locationX':'4','locationY':'3','sizeX':'123','sizeY': '49','tag':'cr-NB-1.1.306@netapp.com' },
+            { 'roomName': 'Harike Lake(6)','longName':'Harike Lake(6)', 'locationX':'133','locationY':'3','sizeX':'123','sizeY': '49','tag':'cr-NB-1.1.329@netapp.com' }
           ]
         },
         {
           'floorName': 'Floor 3',
-          'room': [ { 'roomName': 'Chilika Lake(20-P)', 'locationX':'4','locationY':'3','sizeX':'123','sizeY': '49','tag':'cr-NB-1.1.336@netapp.com' } ]
+          'room': [ { 'roomName': 'Chilika Lake(20-P)','longName':'Chilika Lake(20-P)', 'locationX':'4','locationY':'3','sizeX':'123','sizeY': '49','tag':'cr-NB-1.1.336@netapp.com' } ]
         }
       ]
     },
@@ -61,21 +61,21 @@
         {
           'floorName': 'Floor 4',
           'room': [
-            { 'roomName': 'Hussain Sagar(48-P)', 'locationX':'4','locationY':'3','sizeX':'123','sizeY': '49','tag':'cr-NB-1.1.316@netapp.com' },
-            { 'roomName': 'roomH', 'locationX':'133','locationY':'3','sizeX':'123','sizeY': '49','tag':'cr-NB-1.1.310@netapp.com' },
-            { 'roomName': 'roomI', 'locationX':'262','locationY':'3','sizeX':'123','sizeY': '49','tag':'cr-NB-1.1.310@netapp.com'}
+            { 'roomName': 'Hussain Sagar(48-P)','longName':'Hussain Sagar(48-P)', 'locationX':'4','locationY':'3','sizeX':'123','sizeY': '49','tag':'cr-NB-1.1.316@netapp.com' },
+            { 'roomName': 'roomH','longName':'roomH', 'locationX':'133','locationY':'3','sizeX':'123','sizeY': '49','tag':'cr-NB-1.1.310@netapp.com' },
+            { 'roomName': 'roomI','longName':'roomI', 'locationX':'262','locationY':'3','sizeX':'123','sizeY': '49','tag':'cr-NB-1.1.310@netapp.com'}
           ]
         },
         {
           'floorName': 'Floor 5',
           'room': [
-            { 'roomName': 'roomJ', 'locationX':'4','locationY':'3','sizeX':'123','sizeY': '49','tag':'cr-NB-1.1.310@netapp.com' },
-            { 'roomName': 'roomK', 'locationX':'133','locationY':'3','sizeX':'123','sizeY': '49' ,'tag':'cr-NB-1.1.310@netapp.com'}
+            { 'roomName': 'roomJ','longName':'roomJ', 'locationX':'4','locationY':'3','sizeX':'123','sizeY': '49','tag':'cr-NB-1.1.310@netapp.com' },
+            { 'roomName': 'roomK','longName':'roomK', 'locationX':'133','locationY':'3','sizeX':'123','sizeY': '49' ,'tag':'cr-NB-1.1.310@netapp.com'}
           ]
         },
         {
           'floorName': 'Floor 6',
-          'room': [ { 'roomName': 'roomL', 'locationX':'4','locationY':'3','sizeX':'123','sizeY': '49' ,'tag':'cr-NB-1.1.310@netapp.com'} ]
+          'room': [ { 'roomName': 'roomL','longName':'roomL', 'locationX':'4','locationY':'3','sizeX':'123','sizeY': '49' ,'tag':'cr-NB-1.1.310@netapp.com'} ]
         }
       ]
     }

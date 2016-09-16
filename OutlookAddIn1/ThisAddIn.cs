@@ -60,33 +60,32 @@ namespace OutlookAddIn1
 
         public static string freeBusy;
         public static int startIndex;
-        public static List<AttendeeInfo> attendees;
 
         public static void decideButtonColor(object sender, EventArgs e)
         {
-            var btn = (Button)sender;
+           /* var btn = (Button)sender;
             if (btn.Tag.ToString() != "")
             {
                 ExchangeService service = new ExchangeService();
                 service.UseDefaultCredentials = true;
                 service.Url = new Uri("https://email.netapp.com/EWS/Exchange.asmx");
-                ServicePointManager.ServerCertificateValidationCallback = (object sen, System.Security.Cryptography.X509Certificates.X509Certificate certificate,
-                        System.Security.Cryptography.X509Certificates.X509Chain chain,
-                        System.Net.Security.SslPolicyErrors sslPolicyErrors) => true;
                 AvailabilityOptions myOptions = new AvailabilityOptions();
                 myOptions.MeetingDuration = 30;
-                myOptions.RequestedFreeBusyView = FreeBusyViewType.FreeBusy;
+                myOptions.RequestedFreeBusyView = FreeBusyViewType.Detailed;
                 GetUserAvailabilityResults freeBusyResults = service.GetUserAvailability(attendees,new TimeWindow(DateTime.Now, DateTime.Now.AddDays(1)),AvailabilityData.FreeBusy,myOptions);
-                string temp=null;
+
+
+                string temp = null;
                 foreach (AttendeeAvailability availability in freeBusyResults.AttendeesAvailability)
                 {
                     foreach (CalendarEvent calendarItem in availability.CalendarEvents)
                     {
-                        temp += "\nFree/busy status: " + calendarItem.FreeBusyStatus.ToString() + "\nStart time: " + calendarItem.StartTime.ToString() + "\nEnd time: " + calendarItem.EndTime.ToString();
+                        temp += "Details Location: " + calendarItem.Details.Location;
+                        temp += "\nFree/busy status: " + calendarItem.FreeBusyStatus.ToString() + "\nStart time: " + calendarItem.StartTime.ToString() + "\nEnd time: " + calendarItem.EndTime.ToString()+"\n\n";
                     }
                 }
                 appointmentItem.Body = temp;
-            }
+            }*/
         }
 
         #region VSTO generated code

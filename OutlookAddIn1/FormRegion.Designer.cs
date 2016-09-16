@@ -71,7 +71,7 @@ namespace OutlookAddIn1
         private void myMethod()
         {
 
-           //site name list
+            //site name list
             //populate data
             List<string> siteNameList = new List<string>();
             for (int i = 0; i < siteList.Count; i++)
@@ -84,7 +84,7 @@ namespace OutlookAddIn1
             this.siteComboBox.SelectedIndexChanged += SiteComboBox_SelectedIndexChanged;
 
 
-           //floor name list
+            //floor name list
             //populate data
             floorList = new List<Floor>();
             for (int i = 0; i < test.site[0].floor.Count; i++)
@@ -121,7 +121,8 @@ namespace OutlookAddIn1
                 listButton.Add(new System.Windows.Forms.Button());
             }
 
-            ThisAddIn.attendees = new List<Microsoft.Exchange.WebServices.Data.AttendeeInfo>();
+            List<AttendeeInfo> attendees = new List<AttendeeInfo>();
+            List<int> skippedButtons = new List<int>();
 
             //foreach button
             for (int index = 0; index < t; index++)
@@ -134,20 +135,61 @@ namespace OutlookAddIn1
                 listButton[index].Size = new System.Drawing.Size(roomList[index].sizeX * scale, roomList[index].sizeY * scale);
                 listButton[index].Tag = roomList[index].tag;
                 listButton[index].Click += new System.EventHandler(OutlookAddIn1.ThisAddIn.button1_Click);
-                listButton[index].BackColor = System.Drawing.Color.LightYellow;
+                if (listButton[index].Tag.ToString() != "")
+                {
+                    listButton[index].BackColor = System.Drawing.Color.LightGreen;
+                }
+                else
+                {
+                    listButton[index].BackColor = System.Drawing.Color.LightYellow;
+                }
                 listButton[index].TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
                 listButton[index].Text = roomList[index].roomName;
                 listButton[index].TextChanged += new EventHandler(ThisAddIn.decideButtonColor);
+
                 if (listButton[index].Tag.ToString() != "")
                 {
-                    ThisAddIn.attendees.Add(new AttendeeInfo()
+                    attendees.Add(new AttendeeInfo()
                     {
-                        SmtpAddress = listButton[index].Tag.ToString(),
-                        AttendeeType = MeetingAttendeeType.Required
+                        SmtpAddress = listButton[index].Tag.ToString()
                     });
                 }
+                else
+                {
+                    skippedButtons.Add(index);
+                }
             }
-
+            ExchangeService service = new ExchangeService();
+            service.UseDefaultCredentials = true;
+            service.Url = new Uri("https://email.netapp.com/EWS/Exchange.asmx");
+            AvailabilityOptions myOptions = new AvailabilityOptions();
+            myOptions.MeetingDuration = 30;
+            myOptions.RequestedFreeBusyView = FreeBusyViewType.Detailed;
+            GetUserAvailabilityResults freeBusyResults = service.GetUserAvailability(attendees, new TimeWindow(ThisAddIn.appointmentItem.StartInStartTimeZone, ThisAddIn.appointmentItem.StartInStartTimeZone.AddDays(1)), AvailabilityData.FreeBusy, myOptions);
+            string s=null;
+            foreach (AttendeeAvailability availability in freeBusyResults.AttendeesAvailability)
+            {
+                foreach (CalendarEvent calendarItem in availability.CalendarEvents)
+                {
+                    if (DateTime.Compare(calendarItem.StartTime, ThisAddIn.appointmentItem.Start) < 0 && DateTime.Compare(calendarItem.EndTime, ThisAddIn.appointmentItem.End) > 0)
+                    {
+                        s += "\nFree/busy status: " + calendarItem.FreeBusyStatus;
+                        s += "\nStart time: " + calendarItem.StartTime;
+                        s += "\nEnd time: " + calendarItem.EndTime;
+                        s += "\n Details: " + calendarItem.Details.Location;
+                        for(int q=0;q<listButton.Count;q++)
+                        {
+                            if(listButton[q].Text==calendarItem.Details.Location)
+                            {
+                                listButton[q].BackColor = System.Drawing.Color.OrangeRed;
+                            }
+                        }
+                        s += "\nMatch";
+                        s += "\n";
+                    }
+                }
+            }
+            ThisAddIn.appointmentItem.Body = s;
         }
 
         private void FloorComboBox_SelectedIndexChanged(object sender, EventArgs e)

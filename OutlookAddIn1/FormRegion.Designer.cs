@@ -42,6 +42,7 @@ namespace OutlookAddIn1
         public static List<Room> roomList;
         public static List<Button> listButton;
         public static listModel test;
+        public static List<AttendeeInfo> attendees;
 
         private void myFillData()
         {
@@ -121,8 +122,7 @@ namespace OutlookAddIn1
                 listButton.Add(new System.Windows.Forms.Button());
             }
 
-            List<AttendeeInfo> attendees = new List<AttendeeInfo>();
-            List<int> skippedButtons = new List<int>();
+            attendees = new List<AttendeeInfo>();
 
             //foreach button
             for (int index = 0; index < t; index++)
@@ -131,21 +131,13 @@ namespace OutlookAddIn1
                 //populate buttons
                 int scale = 2;
                 listButton[index].Location = new System.Drawing.Point(roomList[index].locationX * scale, roomList[index].locationY * scale);
-                listButton[index].Name = "button" + index;
                 listButton[index].Size = new System.Drawing.Size(roomList[index].sizeX * scale, roomList[index].sizeY * scale);
                 listButton[index].Tag = roomList[index].tag;
                 listButton[index].Click += new System.EventHandler(OutlookAddIn1.ThisAddIn.button1_Click);
                 listButton[index].TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
                 listButton[index].Text = roomList[index].roomName;
-                if (listButton[index].Tag.ToString() != "")
-                {
-                    listButton[index].BackColor = System.Drawing.Color.LightGreen;
-                }
-                else
-                {
-                    listButton[index].BackColor = System.Drawing.Color.LightYellow;
-                }
-
+                listButton[index].Name = roomList[index].longName;
+                listButton[index].BackColor = System.Drawing.Color.LightGray;
                 if (listButton[index].Tag.ToString() != "")
                 {
                     attendees.Add(new AttendeeInfo()
@@ -153,42 +145,7 @@ namespace OutlookAddIn1
                         SmtpAddress = listButton[index].Tag.ToString()
                     });
                 }
-                else
-                {
-                    skippedButtons.Add(index);
-                }
             }
-            ExchangeService service = new ExchangeService();
-            service.UseDefaultCredentials = true;
-            service.Url = new Uri("https://email.netapp.com/EWS/Exchange.asmx");
-            AvailabilityOptions myOptions = new AvailabilityOptions();
-            myOptions.MeetingDuration = 30;
-            myOptions.RequestedFreeBusyView = FreeBusyViewType.Detailed;
-            GetUserAvailabilityResults freeBusyResults = service.GetUserAvailability(attendees, new TimeWindow(ThisAddIn.appointmentItem.StartInStartTimeZone, ThisAddIn.appointmentItem.StartInStartTimeZone.AddDays(1)), AvailabilityData.FreeBusy, myOptions);
-            string s=null;
-            foreach (AttendeeAvailability availability in freeBusyResults.AttendeesAvailability)
-            {
-                foreach (CalendarEvent calendarItem in availability.CalendarEvents)
-                {
-                    if (DateTime.Compare(calendarItem.StartTime, ThisAddIn.appointmentItem.Start) < 0 && DateTime.Compare(calendarItem.EndTime, ThisAddIn.appointmentItem.End) > 0)
-                    {
-                        s += "\nFree/busy status: " + calendarItem.FreeBusyStatus;
-                        s += "\nStart time: " + calendarItem.StartTime;
-                        s += "\nEnd time: " + calendarItem.EndTime;
-                        s += "\n Details: " + calendarItem.Details.Location;
-                        for(int q=0;q<listButton.Count;q++)
-                        {
-                            if(listButton[q].Text==calendarItem.Details.Location)
-                            {
-                                listButton[q].BackColor = System.Drawing.Color.OrangeRed;
-                            }
-                        }
-                        s += "\nMatch";
-                        s += "\n";
-                    }
-                }
-            }
-            ThisAddIn.appointmentItem.Body = s;
         }
 
         private void FloorComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -321,6 +278,7 @@ namespace OutlookAddIn1
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.button1.Location = new System.Drawing.Point(41, 396);
@@ -328,7 +286,7 @@ namespace OutlookAddIn1
             this.button1.Size = new System.Drawing.Size(110, 48);
             this.button1.TabIndex = 5;
             this.button1.Text = "Load Free/Busy";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // FormRegion
             // 

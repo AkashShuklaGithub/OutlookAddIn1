@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Exchange.WebServices.Data;
+using System;
 using System.Collections.Generic;
 using Outlook = Microsoft.Office.Interop.Outlook;
 
@@ -38,6 +39,52 @@ namespace OutlookAddIn1
         {
             // Note: Outlook no longer raises this event. If you have code that 
             //    must run when Outlook shuts down, see http://go.microsoft.com/fwlink/?LinkId=506785
+        }
+
+        public static void decideButtonColor(object sender, EventArgs e)
+        {
+            //change all button color to green
+            for(int i=0;i<FormRegion.listButton.Count;i++)
+            {
+                if(FormRegion.listButton[i].Tag.ToString()!="")
+                {
+                    FormRegion.listButton[i].BackColor = System.Drawing.Color.LawnGreen;
+                }
+            }
+
+            //check the busy rooms
+            //change the color to red
+            ExchangeService service = new ExchangeService();
+            service.UseDefaultCredentials = true;
+            service.Url = new Uri("https://email.netapp.com/EWS/Exchange.asmx");
+            AvailabilityOptions myOptions = new AvailabilityOptions();
+            myOptions.MeetingDuration = 30;
+            myOptions.RequestedFreeBusyView = FreeBusyViewType.Detailed;
+            GetUserAvailabilityResults freeBusyResults = service.GetUserAvailability(FormRegion.attendees, new TimeWindow(appointmentItem.StartInStartTimeZone, appointmentItem.StartInStartTimeZone.AddDays(1)), AvailabilityData.FreeBusy, myOptions);
+            string s = null;
+            foreach (AttendeeAvailability availability in freeBusyResults.AttendeesAvailability)
+            {
+                foreach (CalendarEvent calendarItem in availability.CalendarEvents)
+                {
+                    if (DateTime.Compare(calendarItem.StartTime, appointmentItem.Start) < 0 && DateTime.Compare(calendarItem.EndTime, appointmentItem.End) > 0)
+                    {
+                        s += "\nFree/busy status: " + calendarItem.FreeBusyStatus;
+                        s += "\nStart time: " + calendarItem.StartTime;
+                        s += "\nEnd time: " + calendarItem.EndTime;
+                        s += "\n Details: " + calendarItem.Details.Location;
+                        for (int q = 0; q < FormRegion.listButton.Count; q++)
+                        {
+                            if (FormRegion.listButton[q].Name == calendarItem.Details.Location)
+                            {
+                                FormRegion.listButton[q].BackColor = System.Drawing.Color.OrangeRed;
+                            }
+                        }
+                        s += "\nMatch";
+                        s += "\n";
+                    }
+                }
+            }
+            appointmentItem.Body = s;
         }
 
         public static void button1_Click(object sender, EventArgs e)

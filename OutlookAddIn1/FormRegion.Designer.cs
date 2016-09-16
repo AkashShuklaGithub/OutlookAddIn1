@@ -163,6 +163,8 @@ namespace OutlookAddIn1
             }
             //clear the buttons
             panel1.Controls.Clear();
+            //clear the attendees
+            attendees.Clear();
 
             //create button list
             listButton = new List<System.Windows.Forms.Button>();
@@ -171,20 +173,31 @@ namespace OutlookAddIn1
             {
                 listButton.Add(new System.Windows.Forms.Button());
             }
+
+            attendees = new List<AttendeeInfo>();
+
+
             //foreach button
-            for (int i = 0; i < t; i++)
+            for (int index = 0; index < t; index++)
             {
-                panel1.Controls.Add(listButton[i]);
+                panel1.Controls.Add(listButton[index]);
                 //populate buttons
                 int scale = 2;
-                listButton[i].Location = new System.Drawing.Point(roomList[i].locationX * scale, roomList[i].locationY * scale);
-                listButton[i].Name = "button" + i;
-                listButton[i].Size = new System.Drawing.Size(roomList[i].sizeX * scale, roomList[i].sizeY * scale);
-                listButton[i].Tag = roomList[i].tag;
-                listButton[i].Click += new System.EventHandler(OutlookAddIn1.ThisAddIn.button1_Click);
-                listButton[i].BackColor = System.Drawing.Color.LightYellow;
-                listButton[i].TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-                listButton[i].Text = roomList[i].roomName;
+                listButton[index].Location = new System.Drawing.Point(roomList[index].locationX * scale, roomList[index].locationY * scale);
+                listButton[index].Size = new System.Drawing.Size(roomList[index].sizeX * scale, roomList[index].sizeY * scale);
+                listButton[index].Tag = roomList[index].tag;
+                listButton[index].Click += new System.EventHandler(OutlookAddIn1.ThisAddIn.button1_Click);
+                listButton[index].TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+                listButton[index].Text = roomList[index].roomName;
+                listButton[index].Name = roomList[index].longName;
+                listButton[index].BackColor = System.Drawing.Color.LightGray;
+                if (listButton[index].Tag.ToString() != "")
+                {
+                    attendees.Add(new AttendeeInfo()
+                    {
+                        SmtpAddress = listButton[index].Tag.ToString()
+                    });
+                }
             }
 
         }

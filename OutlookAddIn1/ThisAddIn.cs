@@ -29,7 +29,7 @@ namespace OutlookAddIn1
             {
                 if(appointmentItem.EntryID==null)
                 {
-                    appointmentItem.Subject = "This subject was added via code";
+                    appointmentItem.Subject = "`";
                 }
             }
 
@@ -48,7 +48,7 @@ namespace OutlookAddIn1
             {
                 if(FormRegion.listButton[i].Tag.ToString()!="")
                 {
-                    FormRegion.listButton[i].BackColor = System.Drawing.Color.LawnGreen;
+                    FormRegion.listButton[i].BackColor = System.Drawing.Color.LightGreen;
                 }
             }
 
@@ -61,17 +61,13 @@ namespace OutlookAddIn1
             myOptions.MeetingDuration = 30;
             myOptions.RequestedFreeBusyView = FreeBusyViewType.Detailed;
             GetUserAvailabilityResults freeBusyResults = service.GetUserAvailability(FormRegion.attendees, new TimeWindow(appointmentItem.StartInStartTimeZone, appointmentItem.StartInStartTimeZone.AddDays(1)), AvailabilityData.FreeBusy, myOptions);
-            string s = null;
+
             foreach (AttendeeAvailability availability in freeBusyResults.AttendeesAvailability)
             {
                 foreach (CalendarEvent calendarItem in availability.CalendarEvents)
                 {
                     if (DateTime.Compare(calendarItem.StartTime, appointmentItem.Start) < 0 && DateTime.Compare(calendarItem.EndTime, appointmentItem.End) > 0)
                     {
-                        s += "\nFree/busy status: " + calendarItem.FreeBusyStatus;
-                        s += "\nStart time: " + calendarItem.StartTime;
-                        s += "\nEnd time: " + calendarItem.EndTime;
-                        s += "\n Details: " + calendarItem.Details.Location;
                         for (int q = 0; q < FormRegion.listButton.Count; q++)
                         {
                             if (FormRegion.listButton[q].Name == calendarItem.Details.Location)
@@ -79,12 +75,9 @@ namespace OutlookAddIn1
                                 FormRegion.listButton[q].BackColor = System.Drawing.Color.OrangeRed;
                             }
                         }
-                        s += "\nMatch";
-                        s += "\n";
                     }
                 }
             }
-            appointmentItem.Body = s;
         }
 
         public static void button1_Click(object sender, EventArgs e)
@@ -94,7 +87,7 @@ namespace OutlookAddIn1
             if (btn.Tag.ToString() != "")
             {
                 appointmentItem.Recipients.Add(btn.Tag.ToString());
-                btn.BackColor = System.Drawing.Color.Green;
+                btn.BackColor = System.Drawing.Color.DarkOliveGreen;
             }
         }
 

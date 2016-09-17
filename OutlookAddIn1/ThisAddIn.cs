@@ -58,26 +58,34 @@ namespace OutlookAddIn1
             service.UseDefaultCredentials = true;
             service.Url = new Uri("https://email.netapp.com/EWS/Exchange.asmx");
             AvailabilityOptions myOptions = new AvailabilityOptions();
-            myOptions.MeetingDuration = 30;
+            myOptions.MeetingDuration = appointmentItem.Duration;
             myOptions.RequestedFreeBusyView = FreeBusyViewType.Detailed;
-            GetUserAvailabilityResults freeBusyResults = service.GetUserAvailability(FormRegion.attendees, new TimeWindow(appointmentItem.StartInStartTimeZone, appointmentItem.StartInStartTimeZone.AddDays(1)), AvailabilityData.FreeBusy, myOptions);
-
+            GetUserAvailabilityResults freeBusyResults = freeBusyResults = service.GetUserAvailability(FormRegion.attendees, new TimeWindow(appointmentItem.StartInStartTimeZone, appointmentItem.StartInStartTimeZone.AddDays(1)), AvailabilityData.FreeBusy, myOptions);
+            string s = null;
             foreach (AttendeeAvailability availability in freeBusyResults.AttendeesAvailability)
             {
                 foreach (CalendarEvent calendarItem in availability.CalendarEvents)
                 {
-                    if (DateTime.Compare(calendarItem.StartTime, appointmentItem.Start) < 0 && DateTime.Compare(calendarItem.EndTime, appointmentItem.End) > 0)
+                    if (DateTime.Compare(calendarItem.StartTime, appointmentItem.Start) <= 0 && DateTime.Compare(calendarItem.EndTime, appointmentItem.End) >= 0)
                     {
+                        s += "\nFree/busy status: " + calendarItem.FreeBusyStatus;
+                        s += "\nStart time: " + calendarItem.StartTime;
+                        s += "\nEnd time: " + calendarItem.EndTime;
+                        s += "\n Details: " + calendarItem.Details.Location;
                         for (int q = 0; q < FormRegion.listButton.Count; q++)
                         {
                             if (FormRegion.listButton[q].Name == calendarItem.Details.Location)
                             {
+                                
                                 FormRegion.listButton[q].BackColor = System.Drawing.Color.OrangeRed;
                             }
                         }
+                        s += "\nMatch";
+                        s += "\n";
                     }
                 }
             }
+            appointmentItem.Body = s;
         }
 
         public static void button1_Click(object sender, EventArgs e)

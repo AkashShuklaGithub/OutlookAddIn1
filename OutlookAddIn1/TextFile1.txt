@@ -15,7 +15,7 @@
 			{  'roomId':'7','roomName': 'Lake Hebbal(8-P)','longName':'cr-NB-1.1 Lake Hebbal (8-P)', 'locationX':'0','locationY':'240','sizeX':'40','sizeY': '40' ,'tag':'cr-NB-1.1.309@netapp.com'},
 			{  'roomId':'8','roomName': 'Hussain Sagar(48-P)','longName':'cr-NB-1.1 Hussain Sagar (48-P)', 'locationX':'200','locationY':'120','sizeX':'80','sizeY': '80','tag':'cr-NB-1.1.316@netapp.com'},
 			{  'roomId':'9','roomName': 'Harike Lake(6)','longName':'cr-NB-1.1 Harike Lake (6)', 'locationX':'400','locationY':'80','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.329@netapp.com'},
-			{  'roomId':'10','roomName': 'Jalmahal Lake(8-P)','longName':'cr-NB-1.1 Jalmahal Lake (8-P)', 'locationX':'360','locationY':'0','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.326@netapp.com'},
+			{  'roomId':'10','roomName': 'Jalmahal Lake(8-P)','longName':'cr-NB-1.1 Jalmahal Lake (8-P) <cr-NB-1.1.326@netapp.com>', 'locationX':'360','locationY':'0','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.326@netapp.com'},
 			{  'roomId':'11','roomName': 'Kodaikanal Lake(12-P)','longName':'cr-NB-1.1 Kodaikanal Lake (12-P)', 'locationX':'440','locationY':'280','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.335@netapp.com'},
 			{  'roomId':'12','roomName': 'Kolleru Lake(10-P)','longName':'cr-NB-1.1 Kolleru Lake (10-P)', 'locationX':'560','locationY':'320','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.3037@netapp.com'},
 			{  'roomId':'13','roomName': 'Lake Michigan','longName':'Lake Michigan', 'locationX':'160','locationY':'0','sizeX':'40','sizeY': '40','tag':'cr-NB-1.1.301@netapp.com'},

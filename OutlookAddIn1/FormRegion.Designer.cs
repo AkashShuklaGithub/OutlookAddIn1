@@ -137,7 +137,7 @@ namespace OutlookAddIn1
                 listButton[index].TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
                 listButton[index].Text = roomList[index].roomName;
                 listButton[index].Name = roomList[index].longName;
-                listButton[index].BackColor = System.Drawing.Color.LightGray;
+                listButton[index].BackColor = System.Drawing.Color.DarkGray;
                 if (listButton[index].Tag.ToString() != "")
                 {
                     attendees.Add(new AttendeeInfo()
@@ -190,7 +190,7 @@ namespace OutlookAddIn1
                 listButton[index].TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
                 listButton[index].Text = roomList[index].roomName;
                 listButton[index].Name = roomList[index].longName;
-                listButton[index].BackColor = System.Drawing.Color.LightGray;
+                listButton[index].BackColor = System.Drawing.Color.DarkGray;
                 if (listButton[index].Tag.ToString() != "")
                 {
                     attendees.Add(new AttendeeInfo()
@@ -235,7 +235,9 @@ namespace OutlookAddIn1
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // siteComboBox
@@ -245,7 +247,7 @@ namespace OutlookAddIn1
             this.siteComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.siteComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.siteComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.siteComboBox.Location = new System.Drawing.Point(72, 195);
+            this.siteComboBox.Location = new System.Drawing.Point(80, 159);
             this.siteComboBox.Name = "siteComboBox";
             this.siteComboBox.Size = new System.Drawing.Size(121, 24);
             this.siteComboBox.TabIndex = 0;
@@ -257,7 +259,7 @@ namespace OutlookAddIn1
             this.floorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.floorComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.floorComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.floorComboBox.Location = new System.Drawing.Point(72, 312);
+            this.floorComboBox.Location = new System.Drawing.Point(80, 262);
             this.floorComboBox.Name = "floorComboBox";
             this.floorComboBox.Size = new System.Drawing.Size(121, 24);
             this.floorComboBox.TabIndex = 1;
@@ -265,61 +267,89 @@ namespace OutlookAddIn1
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(30, 198);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(38, 162);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label1.Size = new System.Drawing.Size(36, 15);
+            this.label1.Size = new System.Drawing.Size(32, 15);
             this.label1.TabIndex = 2;
             this.label1.Text = ":Site";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(22, 315);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(30, 265);
             this.label2.Name = "label2";
             this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label2.Size = new System.Drawing.Size(44, 15);
+            this.label2.Size = new System.Drawing.Size(38, 15);
             this.label2.TabIndex = 3;
             this.label2.Text = ":Floor";
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.panel1.Location = new System.Drawing.Point(199, 3);
+            this.panel1.BackColor = System.Drawing.Color.LightGray;
+            this.panel1.Location = new System.Drawing.Point(219, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1316, 740);
+            this.panel1.Size = new System.Drawing.Size(1363, 740);
             this.panel1.TabIndex = 4;
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.LightGray;
+            this.button1.BackColor = System.Drawing.Color.Teal;
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Adobe Devanagari", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(61, 396);
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(80, 351);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(85, 41);
             this.button1.TabIndex = 5;
             this.button1.Text = "Load Free/Busy";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new EventHandler(ThisAddIn.decideButtonColor);
             // 
             // progressBar1
             // 
-            this.progressBar1.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.progressBar1.Location = new System.Drawing.Point(61, 464);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(85, 15);
-            this.progressBar1.Step = 25;
-            this.progressBar1.TabIndex = 6;
+            progressBar1.BackColor = System.Drawing.Color.Teal;
+            progressBar1.ForeColor = System.Drawing.SystemColors.ControlDark;
+            progressBar1.Location = new System.Drawing.Point(80, 446);
+            progressBar1.Name = "progressBar1";
+            progressBar1.Size = new System.Drawing.Size(85, 15);
+            progressBar1.Step = 25;
+            progressBar1.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.label3.Location = new System.Drawing.Point(32, 360);
+            this.label3.Name = "label3";
+            this.label3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label3.Size = new System.Drawing.Size(36, 15);
+            this.label3.TabIndex = 7;
+            this.label3.Text = ":Click";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.label4.Location = new System.Drawing.Point(12, 446);
+            this.label4.Name = "label4";
+            this.label4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label4.Size = new System.Drawing.Size(58, 15);
+            this.label4.TabIndex = 8;
+            this.label4.Text = ":Progress";
             // 
             // FormRegion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(progressBar1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
@@ -327,7 +357,7 @@ namespace OutlookAddIn1
             this.Controls.Add(this.floorComboBox);
             this.Controls.Add(this.siteComboBox);
             this.Name = "FormRegion";
-            this.Size = new System.Drawing.Size(1405, 756);
+            this.Size = new System.Drawing.Size(1406, 811);
             this.FormRegionShowing += new System.EventHandler(this.FormRegion_FormRegionShowing);
             this.FormRegionClosed += new System.EventHandler(this.FormRegion_FormRegionClosed);
             this.ResumeLayout(false);
@@ -350,7 +380,9 @@ namespace OutlookAddIn1
         #endregion
 
         public Button button1;
-        public ProgressBar progressBar1;
+        public Label label3;
+        public Label label4;
+        public static ProgressBar progressBar1;
 
         public partial class FormRegionFactory : Microsoft.Office.Tools.Outlook.IFormRegionFactory
         {

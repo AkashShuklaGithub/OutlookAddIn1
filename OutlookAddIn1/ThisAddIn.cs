@@ -50,7 +50,7 @@ namespace OutlookAddIn1
             {
                 if (FormRegion.listButton[i].Tag.ToString() != "")
                 {
-                    FormRegion.listButton[i].BackColor = System.Drawing.Color.LightGreen;
+                    FormRegion.listButton[i].BackColor = System.Drawing.Color.YellowGreen;
                 }
             }
             FormRegion.progressBar1.PerformStep();
@@ -63,7 +63,7 @@ namespace OutlookAddIn1
             AvailabilityOptions myOptions = new AvailabilityOptions();
             myOptions.MeetingDuration = appointmentItem.Duration;
             myOptions.RequestedFreeBusyView = FreeBusyViewType.Detailed;
-            GetUserAvailabilityResults freeBusyResults = service.GetUserAvailability(FormRegion.attendees, new TimeWindow(appointmentItem.StartInStartTimeZone, appointmentItem.StartInStartTimeZone.AddDays(1)), AvailabilityData.FreeBusy, myOptions);
+            GetUserAvailabilityResults freeBusyResults = service.GetUserAvailability(FormRegion.attendees, new TimeWindow(appointmentItem.Start.Date, appointmentItem.Start.Date.AddDays(1)), AvailabilityData.FreeBusy, myOptions);
             string s = null;
             foreach (AttendeeAvailability availability in freeBusyResults.AttendeesAvailability)
             {
@@ -75,17 +75,56 @@ namespace OutlookAddIn1
                     s += "\nDetails: " + calendarItem.Details;
                     s += "\nLocation: " + calendarItem.Details.Location;
                     s += "\n";
+
+
                     if (DateTime.Compare(calendarItem.StartTime, appointmentItem.Start) <= 0 && DateTime.Compare(calendarItem.EndTime, appointmentItem.End) >= 0)
                     {
                         for (int q = 0; q < FormRegion.listButton.Count; q++)
                         {
                             if (FormRegion.listButton[q].Name == calendarItem.Details.Location)
                             {
-                                FormRegion.listButton[q].BackColor = System.Drawing.Color.OrangeRed;
+                                FormRegion.listButton[q].BackColor = System.Drawing.Color.Red;
                             }
+
+                            //fixing issued manually
                             if (FormRegion.listButton[q].Name == "cr-NB-1.1 Harike Lake (6)")
                             {
-                                FormRegion.listButton[q].BackColor = System.Drawing.Color.OrangeRed;
+                                FormRegion.listButton[q].BackColor = System.Drawing.Color.Red;
+                            }
+                            if(calendarItem.Details.Location == "Astamudi")
+                            {
+                                if (FormRegion.listButton[q].Name == "cr-NB-1.1 Lake Astamudi(6)")
+                                {
+                                    FormRegion.listButton[q].BackColor = System.Drawing.Color.Red;
+                                }
+                            }
+                            if(calendarItem.Details.Location == "Astamudi Lake")
+                            {
+                                if (FormRegion.listButton[q].Name == "cr-NB-1.1 Lake Astamudi(6)")
+                                {
+                                    FormRegion.listButton[q].BackColor = System.Drawing.Color.Red;
+                                }
+                            }
+                            if (calendarItem.Details.Location == "Kolleru")
+                            {
+                                if (FormRegion.listButton[q].Name == "cr-NB-1.1 Kolleru Lake (10-P)")
+                                {
+                                    FormRegion.listButton[q].BackColor = System.Drawing.Color.Red;
+                                }
+                            }
+                            if (calendarItem.Details.Location == "Kolleru Lake")
+                            {
+                                if (FormRegion.listButton[q].Name == "cr-NB-1.1 Kolleru Lake (10-P)")
+                                {
+                                    FormRegion.listButton[q].BackColor = System.Drawing.Color.Red;
+                                }
+                            }
+                            if (calendarItem.Details.Location == "Pushkar Lake")
+                            {
+                                if (FormRegion.listButton[q].Name == "cr-NB-1.1 Pushkar Lake(6)")
+                                {
+                                    FormRegion.listButton[q].BackColor = System.Drawing.Color.Red;
+                                }
                             }
                         }
                     }

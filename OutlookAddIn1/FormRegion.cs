@@ -38,6 +38,5 @@ namespace OutlookAddIn1
         private void FormRegion_FormRegionClosed(object sender, System.EventArgs e)
         {
         }
-
     }
 }

@@ -235,11 +235,13 @@ namespace OutlookAddIn1
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // siteComboBox
             // 
             this.siteComboBox.BackColor = System.Drawing.Color.GhostWhite;
+            this.siteComboBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.siteComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.siteComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.siteComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -251,6 +253,7 @@ namespace OutlookAddIn1
             // floorComboBox
             // 
             this.floorComboBox.BackColor = System.Drawing.Color.GhostWhite;
+            this.floorComboBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.floorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.floorComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.floorComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -291,21 +294,32 @@ namespace OutlookAddIn1
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.button1.BackColor = System.Drawing.Color.LightGray;
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.button1.Location = new System.Drawing.Point(41, 396);
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Adobe Devanagari", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(61, 396);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 48);
+            this.button1.Size = new System.Drawing.Size(85, 41);
             this.button1.TabIndex = 5;
             this.button1.Text = "Load Free/Busy";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new EventHandler(ThisAddIn.decideButtonColor);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.progressBar1.Location = new System.Drawing.Point(61, 464);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(85, 15);
+            this.progressBar1.Step = 25;
+            this.progressBar1.TabIndex = 6;
             // 
             // FormRegion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
@@ -335,7 +349,8 @@ namespace OutlookAddIn1
 
         #endregion
 
-        private Button button1;
+        public Button button1;
+        public ProgressBar progressBar1;
 
         public partial class FormRegionFactory : Microsoft.Office.Tools.Outlook.IFormRegionFactory
         {

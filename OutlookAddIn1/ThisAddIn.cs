@@ -43,14 +43,17 @@ namespace OutlookAddIn1
 
         public static void decideButtonColor(object sender, EventArgs e)
         {
+            FormRegion.progressBar1.Value = 0;
+            FormRegion.progressBar1.PerformStep();
             //change all button color to green
-            for(int i=0;i<FormRegion.listButton.Count;i++)
+            for (int i = 0; i < FormRegion.listButton.Count; i++)
             {
-                if(FormRegion.listButton[i].Tag.ToString()!="")
+                if (FormRegion.listButton[i].Tag.ToString() != "")
                 {
                     FormRegion.listButton[i].BackColor = System.Drawing.Color.LightGreen;
                 }
             }
+            FormRegion.progressBar1.PerformStep();
 
             //check the busy rooms
             //change the color to red
@@ -60,32 +63,37 @@ namespace OutlookAddIn1
             AvailabilityOptions myOptions = new AvailabilityOptions();
             myOptions.MeetingDuration = appointmentItem.Duration;
             myOptions.RequestedFreeBusyView = FreeBusyViewType.Detailed;
-            GetUserAvailabilityResults freeBusyResults = freeBusyResults = service.GetUserAvailability(FormRegion.attendees, new TimeWindow(appointmentItem.StartInStartTimeZone, appointmentItem.StartInStartTimeZone.AddDays(1)), AvailabilityData.FreeBusy, myOptions);
+            GetUserAvailabilityResults freeBusyResults = service.GetUserAvailability(FormRegion.attendees, new TimeWindow(appointmentItem.StartInStartTimeZone, appointmentItem.StartInStartTimeZone.AddDays(1)), AvailabilityData.FreeBusy, myOptions);
             string s = null;
             foreach (AttendeeAvailability availability in freeBusyResults.AttendeesAvailability)
             {
                 foreach (CalendarEvent calendarItem in availability.CalendarEvents)
                 {
+                    s += "\nFree/busy status: " + calendarItem.FreeBusyStatus;
+                    s += "\nStart time: " + calendarItem.StartTime;
+                    s += "\nEnd time: " + calendarItem.EndTime;
+                    s += "\nDetails: " + calendarItem.Details;
+                    s += "\nLocation: " + calendarItem.Details.Location;
+                    s += "\n";
                     if (DateTime.Compare(calendarItem.StartTime, appointmentItem.Start) <= 0 && DateTime.Compare(calendarItem.EndTime, appointmentItem.End) >= 0)
                     {
-                        s += "\nFree/busy status: " + calendarItem.FreeBusyStatus;
-                        s += "\nStart time: " + calendarItem.StartTime;
-                        s += "\nEnd time: " + calendarItem.EndTime;
-                        s += "\n Details: " + calendarItem.Details.Location;
                         for (int q = 0; q < FormRegion.listButton.Count; q++)
                         {
                             if (FormRegion.listButton[q].Name == calendarItem.Details.Location)
                             {
-                                
+                                FormRegion.listButton[q].BackColor = System.Drawing.Color.OrangeRed;
+                            }
+                            if (FormRegion.listButton[q].Name == "cr-NB-1.1 Harike Lake (6)")
+                            {
                                 FormRegion.listButton[q].BackColor = System.Drawing.Color.OrangeRed;
                             }
                         }
-                        s += "\nMatch";
-                        s += "\n";
                     }
+                    FormRegion.progressBar1.PerformStep();
                 }
             }
             appointmentItem.Body = s;
+            FormRegion.progressBar1.PerformStep();
         }
 
         public static void button1_Click(object sender, EventArgs e)

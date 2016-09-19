@@ -76,8 +76,8 @@ namespace OutlookAddIn1
                     s += "\nLocation: " + calendarItem.Details.Location;
                     s += "\n";
 
-
-                    if (DateTime.Compare(calendarItem.StartTime, appointmentItem.Start) <= 0 && DateTime.Compare(calendarItem.EndTime, appointmentItem.End) >= 0)
+                    //if the start of the appointment falls in between the calendar item start and calendar item end
+                    if (DateTime.Compare(calendarItem.StartTime, appointmentItem.Start) <= 0 && DateTime.Compare(appointmentItem.Start,calendarItem.EndTime) <= 0)
                     {
                         for (int q = 0; q < FormRegion.listButton.Count; q++)
                         {
